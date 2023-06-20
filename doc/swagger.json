@@ -125,7 +125,7 @@
                     "400": {
                         "description": "Invalid status value",
                         "schema": {
-                            "$ref": "#"
+                            "$ref": "#/definitions/InvalidResponse"
                         }
                     }
                 }
