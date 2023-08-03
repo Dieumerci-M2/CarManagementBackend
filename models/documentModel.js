@@ -9,6 +9,18 @@ const document = ( sequilize, DataTypes ) => {
             type: DataTypes.STRING,
             allowNull : false 
         },
+        nomProp: {
+            type: DataTypes.STRING,
+            allowNull : false 
+        },
+        photoProp: {
+            type: DataTypes.STRING,
+            allowNull : false 
+        },
+        photoVehicule: {
+            type: DataTypes.STRING,
+            allowNull : false 
+        },
         assurance: {
             type: DataTypes.BOOLEAN,
             allowNull : false
