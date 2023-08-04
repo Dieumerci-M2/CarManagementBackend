@@ -1,5 +1,5 @@
-const document = ( sequilize, DataTypes ) => {
-    return sequilize.define( 'document', {
+const document = ( sequelize, DataTypes ) => {
+    return sequelize.define( 'document', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -15,7 +15,7 @@ const document = ( sequilize, DataTypes ) => {
         },
         photoProp: {
             type: DataTypes.STRING,
-            allowNull : false 
+            default: 'https://res.cloudinary.com/md-chatapp-mern/image/upload/v1668690954/ti1nbpcrxaevqp9fjiks.jpg' 
         },
         photoVehicule: {
             type: DataTypes.STRING,
@@ -48,4 +48,4 @@ const document = ( sequilize, DataTypes ) => {
     })
 }
 
-export default document
+export default document 
