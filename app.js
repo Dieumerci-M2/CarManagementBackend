@@ -7,7 +7,6 @@ import bodyParser from 'body-parser'
 // Call all environnement variables
 import { } from 'dotenv/config'
 import dotenv from 'dotenv'
-import document from './models/documentModel.js'
 // use express dependancies
 const app = express()
 dotenv.config();
