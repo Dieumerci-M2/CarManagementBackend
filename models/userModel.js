@@ -1,6 +1,7 @@
+import db from "../config/configDb.js"
+import { DataTypes } from "sequelize"
 
-const userModel = ( sequelize, DataTypes ) => {
-    return sequelize.define('user',{
+const userModel =  db.define('user',{
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -29,12 +30,11 @@ const userModel = ( sequelize, DataTypes ) => {
                 }
         } 
     },
-    
     {
         timestamps: true,
         createdAt: 'created',
-        updatedAt: false
+        updatedAt: false,
     })
-}
+
 
 export default userModel
