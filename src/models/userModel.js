@@ -1,6 +1,7 @@
+import db from "../../config/configDb.js"
+import { DataTypes } from "sequelize"
 
-const userModel = ( sequelize, DataTypes ) => {
-    return sequelize.define('user',{
+const userModel =  db.define('user',{
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -14,7 +15,7 @@ const userModel = ( sequelize, DataTypes ) => {
             },
             validate:{
                 notEmpty: {msg: `Veillez entre un nom d'utilisateur svp`},
-                notNull: {msg: `Les points de vue sont une propiétés réquise`}
+                notNull: {msg: `Le nom d'utilisateur doit contenir aumoins 2 caractères`}
                 }
         },
         password: {
@@ -29,12 +30,11 @@ const userModel = ( sequelize, DataTypes ) => {
                 }
         } 
     },
-    
     {
         timestamps: true,
         createdAt: 'created',
-        updatedAt: false
+        updatedAt: false,
     })
-}
+
 
 export default userModel
