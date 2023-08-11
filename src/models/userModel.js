@@ -1,4 +1,4 @@
-import db from "../config/configDb.js"
+import db from "../../config/configDb.js"
 import { DataTypes } from "sequelize"
 
 const userModel =  db.define('user',{
@@ -15,7 +15,7 @@ const userModel =  db.define('user',{
             },
             validate:{
                 notEmpty: {msg: `Veillez entre un nom d'utilisateur svp`},
-                notNull: {msg: `Les points de vue sont une propiétés réquise`}
+                notNull: {msg: `Le nom d'utilisateur doit contenir aumoins 2 caractères`}
                 }
         },
         password: {

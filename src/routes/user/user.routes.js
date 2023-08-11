@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { signUp } from '../../user.controller.js'
+import { signUp } from '../../controllers/user.controller.js'
 
 const routerAccount = Router();
 
