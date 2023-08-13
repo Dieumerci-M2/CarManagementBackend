@@ -1,5 +1,6 @@
 import db from "../../config/configDb.js"
 import { DataTypes } from "sequelize"
+import bcrypt from "bcrypt"
 
 const userModel =  db.define('user',{
         id: {
@@ -29,12 +30,23 @@ const userModel =  db.define('user',{
                 notNull: {msg: `Le mot de passe doit contenir aumoins 8 caractères`}
                 }
         } 
-    },
+    }, 
+
     {
         timestamps: true,
         createdAt: 'created',
         updatedAt: false,
-    })
+    } )
 
+    userModel.beforeCreate((user, options) => {
+
+    return bcrypt.hash(user.password, 10)
+        .then(hash => {
+            user.password = hash;
+        })
+        .catch(err => { 
+            throw new Error(); 
+        });
+});
 
 export default userModel
