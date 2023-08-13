@@ -1,11 +1,11 @@
-import superUserModel from "../models/superUser";
+import superUserModel from "../models/superUser.js";
 import bcrypt from "bcrypt"
 
 const superLogin = ( req, res ) => {
     try {
         superUserModel.findOne( { where: { userName: req.body.userName } } )
             .then( user => {
-                bcrypt.compare( user.password, req.body.password )
+                bcrypt.compare( req.body.password, user.password )
                     .then( isValidPassword => {
                         if ( isValidPassword ) {
                             res.status( 200 ).json( {
