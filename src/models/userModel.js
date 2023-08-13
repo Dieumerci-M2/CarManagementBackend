@@ -38,7 +38,7 @@ const userModel =  db.define('user',{
         updatedAt: false,
     } )
 
-    userModel.beforeCreate((user, options) => {
+    userModel.beforeCreate(user => {
 
     return bcrypt.hash(user.password, 10)
         .then(hash => {

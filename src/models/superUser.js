@@ -1,5 +1,8 @@
-const superUser = ( sequelize, DataTypes ) => {
-    return sequelize.define('user',{
+import db from "../../config/configDb.js"
+import bcrypt from "bcrypt"
+import { DataTypes } from "sequelize"
+
+const superUserModel = db.define('superuser',{
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -25,7 +28,7 @@ const superUser = ( sequelize, DataTypes ) => {
             validate:{
                 notEmpty: {msg: `Veillez Entrer un mot de passe svp`},
                 notNull: {msg: `Le mot de passe doit contenir aumoins 8 caractères`}
-                }
+            }
         } 
     },
     
@@ -33,7 +36,17 @@ const superUser = ( sequelize, DataTypes ) => {
         timestamps: true,
         createdAt: 'created',
         updatedAt: false
-    })
-}
+    } )
+    
+superUserModel.beforeCreate( superuser => {
+    return bcrypt.hash( superuser.password, 10 )
+        .then( hash => {
+            superuser.password = hash
+        } )
+        .catch( err => {
+            throw new Error()
+        })
+    } )
 
-export default superUser
+
+export default superUserModel
