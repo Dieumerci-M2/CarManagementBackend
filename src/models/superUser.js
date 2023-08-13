@@ -1,8 +1,8 @@
-import db from "../../config/configDb"
+import db from "../../config/configDb.js"
 import bcrypt from "bcrypt"
 import { DataTypes } from "sequelize"
 
-const superUser = db.define('superuser',{
+const superUserModel = db.define('superuser',{
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -38,7 +38,7 @@ const superUser = db.define('superuser',{
         updatedAt: false
     } )
     
-superUser.beforeCreate( superuser => {
+superUserModel.beforeCreate( superuser => {
     return bcrypt.hash( superuser.password, 10 )
         .then( hash => {
             superuser.password = hash
@@ -49,4 +49,4 @@ superUser.beforeCreate( superuser => {
     } )
 
 
-export default superUser
+export default superUserModel

@@ -5,7 +5,9 @@ import bodyParse from 'body-parser'
 // Call all environnement variables
 import { } from 'dotenv/config'
 import dotenv from 'dotenv'
+// Call All routers
 import routerUser from './src/routes/user/index.js'
+import superRoute from './src/routes/superuser/index.js'
 // use express dependancies
 const app = express()
 dotenv.config();
@@ -20,6 +22,9 @@ app
 app.get( "/", ( req, res ) => {
     res.send("All is going very well")
 } )
-app.use( "/user", routerUser )
+app
+    .use( "/user", routerUser )
+    .use("/superuser", superRoute)
+
 // Add port listerning
 app.listen(port, ()=> console.log( `Notre app est lancée sur : http://localhost:${port}`))  
