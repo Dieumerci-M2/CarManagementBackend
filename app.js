@@ -8,6 +8,7 @@ import dotenv from 'dotenv'
 // Call All routers
 import routerUser from './src/routes/user/index.js'
 import superRoute from './src/routes/superuser/index.js'
+import userLogin from './src/routes/loginuser/index.js'
 // use express dependancies
 const app = express()
 dotenv.config();
@@ -24,7 +25,8 @@ app.get( "/", ( req, res ) => {
 } )
 app
     .use( "/user", routerUser )
-    .use("/superuser", superRoute)
+    .use( "/superuser", superRoute )
+    .use("/userLogin", userLogin)
 
 // Add port listerning
 app.listen(port, ()=> console.log( `Notre app est lancée sur : http://localhost:${port}`))  
