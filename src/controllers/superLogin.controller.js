@@ -1,5 +1,7 @@
 import superUserModel from "../models/superUser.js";
 import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
+import { secret } from "../../config/auth.js";
 
 const superLogin = ( req, res ) => {
         superUserModel.findOne( { where: { userName: req.body.userName } } )
@@ -16,9 +18,18 @@ const superLogin = ( req, res ) => {
                                 message : `user name or password incorrect`
                             })
                         }
-                    res.status( 200 ).json( {
-                                message: `Super user Connected`,
-                                data : user
+
+                        // JWT
+                        const token = jwt.sign(
+                            { userId: user.id },
+                            secret,
+                            {expiresIn : '24h'}
+                        )
+
+                        res.status( 200 ).json( {
+                            message: `Super user Connected`,
+                            data: user,
+                            token
                         })
                 })
             } )
