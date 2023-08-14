@@ -16,7 +16,7 @@ const login = ( req, res ) => {
                     .then( ispasswordValid => {
                         if ( !ispasswordValid ) {
                             res.status( 401 ).json( {
-                               message : `incorrect password`
+                               message : `user name or password incorrect`
                            }) 
                         }
                         res.status( 200 ).json( {
@@ -32,8 +32,5 @@ const login = ( req, res ) => {
                 })
             })
         } 
-    
-    
-
 
 export default login
