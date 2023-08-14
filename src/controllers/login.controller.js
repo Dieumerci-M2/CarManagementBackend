@@ -1,6 +1,7 @@
 import userModel from "../models/userModel.js"
 import bcryp from "bcrypt"
-
+import jwt from "jsonwebtoken"
+import { secret } from "../../config/auth.js"
 
 
 const login = ( req, res ) => {
@@ -19,10 +20,17 @@ const login = ( req, res ) => {
                                message : `user name or password incorrect`
                            }) 
                         }
+                        //JWT
+                        const token = jwt.sign(
+                            { userId: used.id },
+                            secret,
+                            {expiresIn : '24h'}
+                        )
                         res.status( 200 ).json( {
-                                message: `User Connected`,
-                                data: used
-                            } )
+                            message: `User Connected`,
+                            data: used,
+                            token
+                        } )
                     } )
             } )
             .catch( error => {
