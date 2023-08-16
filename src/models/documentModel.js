@@ -1,5 +1,7 @@
-const document = ( sequelize, DataTypes ) => {
-    return sequelize.define( 'document', {
+import db from "../../config/configDb.js"
+import { DataTypes } from "sequelize"
+
+const document = db.define( 'document', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -46,6 +48,5 @@ const document = ( sequelize, DataTypes ) => {
             allowNull : false
         }
     })
-}
 
 export default document 

@@ -10,6 +10,7 @@ import routerUser from './src/routes/user/index.js'
 import superRoute from './src/routes/superuser/index.js'
 import userLogin from './src/routes/loginuser/index.js'
 import superuserLogin from './src/routes/loginSuperuser/index.js'
+import docsRoute from './src/routes/createDocument/index.js'
 // use express dependancies
 const app = express()
 dotenv.config();
@@ -28,7 +29,8 @@ app
     .use( "/user", routerUser )
     .use( "/superuser", superRoute )
     .use( "/userLogin", userLogin )
-    .use("/superuserLogin", superuserLogin)
+    .use( "/superuserLogin", superuserLogin )
+    .use("/document", docsRoute)
 
 // Add port listerning
 app.listen(port, ()=> console.log( `Notre app est lancée sur : http://localhost:${port}`))  
