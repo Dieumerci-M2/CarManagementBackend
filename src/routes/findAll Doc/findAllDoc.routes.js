@@ -1,6 +1,9 @@
-import { auth } from "../middleware/authjwt.js";
 import { Router } from "express";
+import { authorization } from "../../middleware/authjwt.js";
+import findAllDocuments from "../../controllers/findAllDocuments.controller.js";
 
-export const findAllDocRoute = Router()
+const router = Router()
 
-findAllDocRoute.get( "/limit", auth, findAllDocRoute )
+router.get( "/findAll",authorization, findAllDocuments )
+
+export default router

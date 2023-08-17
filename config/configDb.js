@@ -9,7 +9,7 @@ const db = new Sequelize(process.env.POSTGRESQL_DB_URI,
         dialectOption: {
             timezone: 'Etc/GMT+2'
         },
-        logging: true
+        logging: false
   } )
 
   try {

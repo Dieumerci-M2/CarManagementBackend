@@ -1,28 +1,29 @@
 import jwt from "jsonwebtoken"
-import { secret } from "../../config/auth"
+import { secret } from "../../config/auth.js"
 
-export const auth = ( req, res, next ) => {
-    const authorizationHeader = req.headers.authorization 
-    if ( !authorizationHeader ) {
-        res.status( 401 ).json( {
-            message : `you haven't get the authaurization token to the header of your request.. please add one to the header of the request`
-        })
+export const authorization = (req, res, next) =>{
+
+    const authorisationHeader  = req.headers.authorization;
+
+    if(!authorisationHeader){
+        const message = `vous n'avez pas fournie de jeton d'authentification, veillez en ajouter dans l'entête de la requête`
+        res.status(401).json({message})
     }
-    const token = authorizationHeader.split( ' ' )[ 1 ]
-    const decodedToken = jwt.verify( token, secret, ( error, decoded ) => {
-        if ( error ) {
-            res.status( 401 ).json( {
-                message: `The used is not authorise to access to this ressources`,
-                data : error
-            })
+
+    const token = authorisationHeader.split(' ')[1]
+    const decodedToken = jwt.verify(token, secret, (error, decodedToken)=>{
+
+        if(error){ 
+            const message = `L'utilisateur n'est pas authorisez à acceder à cette ressource`
+            res.status(401).json({message, data: error})
         }
+
         const userId = decodedToken.userId
-        if ( req.body.userId && req.body.userId !== userId ) {
-            res.status( 401 ).json( {
-                message : `The user identifier is not valid`
-            })
-        } else {
-            next()
+        if(req.body.userId && req.body.userId !== userId){
+            const message = `L'identifiant de l'utilisateur est invalid`
+            res.status(401).json({message})
+        }else{
+            next();
         }
     })
 }
