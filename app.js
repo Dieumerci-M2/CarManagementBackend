@@ -13,6 +13,7 @@ import superuserLogin from './src/routes/loginSuperuser/index.js'
 import docsRoute from './src/routes/createDocument/index.js'
 import findAllDocRoute from './src/routes/findAll Doc/findAllDoc.routes.js'
 import updateRouter from './src/routes/UpdateDocument/updateDoc.routes.js'
+import deleteDocRouter from './src/routes/DeleteDocument/deleteDoc.routes.js'
 // use express dependancies
 const app = express()
 dotenv.config();
@@ -34,7 +35,8 @@ app
     .use( "/superuserLogin", superuserLogin )
     .use( "/document", docsRoute )
     .use( "/document", findAllDocRoute )
-    .use("/document", updateRouter)
+    .use( "/document", updateRouter )
+    .use("/document", deleteDocRouter)
 
 // Add port listerning
 app.listen(port, ()=> console.log( `Notre app est lancée sur : http://localhost:${port}`))  
