@@ -15,7 +15,7 @@ import findAllDocRoute from './src/routes/findAll Doc/findAllDoc.routes.js'
 import updateRouter from './src/routes/UpdateDocument/updateDoc.routes.js'
 import deleteDocRouter from './src/routes/DeleteDocument/deleteDoc.routes.js'
 
-import * as cors from "cors"
+import cors from "cors"
 // use express dependancies
 const app = express()
 dotenv.config();
