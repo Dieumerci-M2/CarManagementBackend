@@ -14,6 +14,8 @@ import docsRoute from './src/routes/createDocument/index.js'
 import findAllDocRoute from './src/routes/findAll Doc/findAllDoc.routes.js'
 import updateRouter from './src/routes/UpdateDocument/updateDoc.routes.js'
 import deleteDocRouter from './src/routes/DeleteDocument/deleteDoc.routes.js'
+
+import * as cors from "cors"
 // use express dependancies
 const app = express()
 dotenv.config();
@@ -23,7 +25,8 @@ const port = process.env.PORT || 6000
 app
     .use( express.json() )
     .use( express.urlencoded( { extended: false } ) )
-    .use(bodyParse.json())
+    .use( bodyParse.json() )
+    .use(cors({methods:"GET,POST,PUT,DELETE,OPTIONS", allowedHeaders:"*",origin:"*"}))
 //Routes
 app.get( "/", ( req, res ) => {
     res.send("All is going very well")
