@@ -14,6 +14,7 @@ import docsRoute from './src/routes/createDocument/index.js'
 import findAllDocRoute from './src/routes/findAll Doc/findAllDoc.routes.js'
 import updateRouter from './src/routes/UpdateDocument/updateDoc.routes.js'
 import deleteDocRouter from './src/routes/DeleteDocument/deleteDoc.routes.js'
+import findByPk from './src/routes/FindByPk/findByPk.routes.js'
 
 import cors from "cors"
 // use express dependancies
@@ -39,7 +40,8 @@ app
     .use( "/document", docsRoute )
     .use( "/document", findAllDocRoute )
     .use( "/document", updateRouter )
-    .use("/document", deleteDocRouter)
+    .use( "/document", deleteDocRouter )
+    .use("/document", findByPk)
 
 // Add port listerning
 app.listen(port, ()=> console.log( `Notre app est lancée sur : http://localhost:${port}`))  
