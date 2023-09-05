@@ -46,6 +46,10 @@ const document = db.define( 'document', {
         vitreTinte: {
             type: DataTypes.BOOLEAN,
             allowNull : false
+    },
+    marque: {
+        type: DataTypes.STRING,
+        allowNull : false
         }
     })
 
