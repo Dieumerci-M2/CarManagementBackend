@@ -5,7 +5,7 @@ const document = db.define( 'document', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIcremente: true
+            autoIncrement: true
         },
         plaque: {
             type: DataTypes.STRING,

@@ -6,7 +6,7 @@ const userModel =  db.define('user',{
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIcremente: true
+            autoIncrement: true
         },
         userName: {
             type: DataTypes.STRING,
