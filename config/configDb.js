@@ -12,15 +12,6 @@ const db = new Sequelize(process.env.POSTGRESQL_DB_URI,
         logging: false
   } )
 
-  try {
-    db.authenticate();
-    console.log("DB connected")
-  } catch (error) {
-      console.log("Connexion error")
-  }
+ 
     
 export default db; 
-
-(async () => {
-  await db.sync({alter: true})
-})()

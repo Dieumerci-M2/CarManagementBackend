@@ -17,11 +17,26 @@ import deleteDocRouter from './src/routes/DeleteDocument/deleteDoc.routes.js'
 import findByPk from './src/routes/FindByPk/findByPk.routes.js'
 
 import cors from "cors"
+import db from './config/configDb.js'
+import "./src/models/superUser.js"
+import "./src/models/userModel.js"
+import "./src/models/documentModel.js"
 // use express dependancies
 const app = express()
 dotenv.config();
 // Add port for running app content
 const port = process.env.PORT || 6000
+
+// DATABASE CONNECTION
+ try {
+    // db.authenticate();
+     await db.sync({alter:true})
+    console.log("DB connected")
+  } catch (error) {
+      console.log("Connexion error")
+  }
+
+
 //Middlewares
 app
     .use( express.json() )
@@ -41,7 +56,10 @@ app
     .use( "/document", findAllDocRoute )
     .use( "/document", updateRouter )
     .use( "/document", deleteDocRouter )
-    .use("/document", findByPk)
+    .use( "/document", findByPk )
+    .use( (err, req, res, next) => {
+        res.status(400).json({message: "ERROR OCCURED", data : err})
+    })
 
 // Add port listerning
 app.listen(port, ()=> console.log( `Notre app est lancée sur : http://localhost:${port}`))  

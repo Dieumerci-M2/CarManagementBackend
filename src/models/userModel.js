@@ -3,11 +3,7 @@ import { DataTypes } from "sequelize"
 import bcrypt from "bcrypt"
 
 const userModel =  db.define('user',{
-        id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
+
         userName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -29,7 +25,11 @@ const userModel =  db.define('user',{
                 notEmpty: {msg: `Veillez Entrer un mot de passe svp`},
                 notNull: {msg: `Le mot de passe doit contenir aumoins 8 caractères`}
                 }
-        } 
+    },
+    birthday : {
+        type: DataTypes.DATE,
+        allowNull : true
+    },
     }, 
 
     {

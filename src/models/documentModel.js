@@ -33,7 +33,7 @@ const document = db.define( 'document', {
         },
         carteRose: {
             type: DataTypes.BOOLEAN,
-            allowNull : false
+            allowNull : false  
         },
         permiDeConduire: {
             type: DataTypes.BOOLEAN,
@@ -49,7 +49,7 @@ const document = db.define( 'document', {
     },
     marque: {
         type: DataTypes.STRING,
-        allowNull : false
+        allowNull : true
         }
     })
 
