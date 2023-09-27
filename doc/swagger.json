@@ -13,18 +13,18 @@
         }
     },
     "schemes": ["http"],
-    "host": "localhost:4000",
-    "basePath": "/car",
+    "host": "localhost:4500",
+    "basePath": "/",
     "paths" : {
-        "/show" : {
-            "get" : {
-                "summary" : "Get all the cars",
+        "/userLogin/account/login" : {
+            "post" : {
+                "summary" : "Login as user",
                 "description": "Get all the cars which are on the Data base",
                 "produces": ["application/json"],
                 "parameters": [],
                 "responses": {
                     "200": {
-                        "description": "successful operation",
+                        "description": "user connected successfuly",
                         "schema": {
                             "type": "array",
                             "items": {
