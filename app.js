@@ -15,27 +15,27 @@ import findAllDocRoute from './src/routes/findAll Doc/findAllDoc.routes.js'
 import updateRouter from './src/routes/UpdateDocument/updateDoc.routes.js'
 import deleteDocRouter from './src/routes/DeleteDocument/deleteDoc.routes.js'
 import findByPk from './src/routes/FindByPk/findByPk.routes.js'
-
+// Call cors for sharing resources between remote and local origins
 import cors from "cors"
+// Call db and all models for Synchronisation
 import db from './config/configDb.js'
 import "./src/models/superUser.js"
 import "./src/models/userModel.js"
 import "./src/models/documentModel.js"
-// use express dependancies
+// use express dependancie
 const app = express()
+// Loads environment variables from a .env file
 dotenv.config();
 // Add port for running app content
 const port = process.env.PORT || 6000
 
-// DATABASE CONNECTION
+// DATABASE Connection
  try {
-    // db.authenticate();
      await db.sync({alter:true})
     console.log("DB connected")
   } catch (error) {
       console.log("Connexion error")
   }
-
 
 //Middlewares
 app
