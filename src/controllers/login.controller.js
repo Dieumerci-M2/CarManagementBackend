@@ -1,7 +1,7 @@
 // Call user Model
 import userModel from "../models/userModel.js"
 // Call bcrypt 
-import bcryp from "bcrypt"
+import bcrypt from "bcrypt"
 // Call Json web token 
 import jwt from "jsonwebtoken"
 // Call the secret key
@@ -36,7 +36,7 @@ const login = ( req, res ) => {
              * This method takes two parameter; the body password and user password
              * which is on DB 
              */
-            bcryp.compare( req.body.password, used.password )
+            bcrypt.compare( req.body.password, used.password )
                     /**
                      * If all goes well then we wait the response on promise
                      * But Before having response we check if the password is valid 
