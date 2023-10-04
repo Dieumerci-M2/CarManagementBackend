@@ -1,6 +1,19 @@
-import db from "../../config/configDb.js"
-import { DataTypes } from "sequelize"
+// Import bcrypt
 import bcrypt from "bcrypt"
+// Call Data base configuration
+import db from "../../config/configDb.js"
+// Import DataTypes to five type to the Model elements
+import { DataTypes } from "sequelize"
+/**
+ * We use Define() sequelize's methode to create a Dta Base Table
+ * This contain tree parameters, the first is the name of the table
+ * After giving the Table's name Sequelize will ad an 's' to that table's name
+ * The third parameter is optonal.. It give the extra information of the table
+ * like the Timestamp, created at, updated at ect.
+ * As you will see, the second argument is an object containing the names of the
+ * rows as keys and their types as values. Secondly, we can say whether this line
+ * can take a null value or not, with allownull as the key and a Boolean as the value.
+ */
 
 const userModel =  db.define('user',{
 
@@ -25,10 +38,6 @@ const userModel =  db.define('user',{
                 notEmpty: {msg: `Veillez Entrer un mot de passe svp`},
                 notNull: {msg: `Le mot de passe doit contenir aumoins 8 caractères`}
                 }
-    },
-    birthday : {
-        type: DataTypes.DATE,
-        allowNull : true
     },
     }, 
 

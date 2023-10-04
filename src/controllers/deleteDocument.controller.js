@@ -33,7 +33,17 @@ export const deleteDoc = ( req, res ) => {
                 })
             })
         } )
-        // Catch Validation and Contrain's Errors
+        /**
+         * If something going wrong,
+         * So we test whether the error comes from the validator or from
+         *  the constraint given by Sequilize.
+         *  If the error comes from one of the two Sequilize testers,
+         *  then we send a status 400 which means that the user is not
+         *  allowed to access the resources.
+         * If the error does not come from these two testers then we
+         *  can consider that the error comes from the server and we
+         *  send a status 500
+         */
         .catch( err => {
             if(err instanceof ValidationError){
                 res.status(400).json({message: err.message, data: err})
@@ -41,7 +51,6 @@ export const deleteDoc = ( req, res ) => {
             if(err instanceof UniqueConstraintError){
                 res.status(400).json({message: err.message, data: err})
             }
-            // If Error doesn't come to the code above then send the status 500 to the Client that means however error cames to the server
             const message = `Le server ne repond pas veillez ressayez après quelques instants`     
             res.status(500).json({message})
         })

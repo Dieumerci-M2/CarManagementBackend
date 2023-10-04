@@ -1,7 +1,7 @@
 // Call Super User Model 
 import superUserModel from "../models/superUser.js";
 // Call bcrypt 
-import bcryp from "bcrypt"
+import bcrypt from "bcrypt"
 // Call Json web token 
 import jwt from "jsonwebtoken"
 // Call the secret key

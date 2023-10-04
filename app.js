@@ -42,7 +42,8 @@ app
     .use( express.json() )
     .use( express.urlencoded( { extended: false } ) )
     .use( bodyParse.json() )
-    .use(cors({methods:"GET,POST,PUT,DELETE,OPTIONS", allowedHeaders:"*",origin:"*"}))
+    .use( cors( { methods: "GET,POST,PUT,DELETE,OPTIONS", allowedHeaders: "*", origin: "*" } ) )
+    
 //Routes
 app.get( "/", ( req, res ) => {
     res.send("All is going very well")
