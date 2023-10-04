@@ -39,10 +39,6 @@ const userModel =  db.define('user',{
                 notNull: {msg: `Le mot de passe doit contenir aumoins 8 caractères`}
                 }
     },
-    birthday : {
-        type: DataTypes.DATE,
-        allowNull : true
-    },
     }, 
 
     {
