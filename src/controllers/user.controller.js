@@ -1,5 +1,5 @@
 // Call super user Model
-import userModel from "../models/superUser.js";
+import userModel from "../models/userModel"
 /**
  * Define controler function's name and give it parameters 
  */
@@ -13,7 +13,7 @@ export const signUp = async ( req, res, next ) => {
          *  */ 
         const user = await userModel.create( {
             userName,
-            password,id:undefined
+            password
         } );
          /**
          * If all goes well then return a status 200 and a Json file
