@@ -1,5 +1,5 @@
 // Call super user Model
-import userModel from "../models/userModel"
+import userModel from "../models/userModel.js"
 /**
  * Define controler function's name and give it parameters 
  */
