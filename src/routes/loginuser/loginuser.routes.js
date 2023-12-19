@@ -1,5 +1,6 @@
 import { Router } from "express";
 import login from "../../controllers/login.controller.js";
+import { authorization} from "../../middleware/authjwt.js";
 // Define router and asign it to the express Router
 const loginAccount = Router()
 /**
@@ -8,6 +9,6 @@ const loginAccount = Router()
  *  As you can see we use Authorisation Middleware to check if the user has
  * ability to make this action
  *  */ 
-loginAccount.post( "/login", login )
+loginAccount.post( "/login", authorization, login )
 
 export default loginAccount
