@@ -1,5 +1,4 @@
 import { Router } from 'express'
-
 import { signUp } from '../../controllers/user.controller.js'
 // Define router and asign it to the express Router
 const routerAccount = Router();
